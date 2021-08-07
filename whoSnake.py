@@ -1,10 +1,10 @@
 
-		##############################
-		##                          ##
-		##       whoSnake.py        ##
-		##  Written by MadMartigan  ##
-		##                          ##
-		##############################
+##############################
+##                          ##
+##       whoSnake.py        ##
+##        Martigan          ##
+##                          ##
+##############################
 
 import os
 import sys
@@ -16,7 +16,7 @@ from scapy.all import *
 from ipwhois import IPWhois
 
 def count_pcap(file_name):
-	'''Counts and prints total number of packets in the pcap'''
+	# Counts and prints total number of packets in the pcap
 	print(f'Opening "{file_name}"...')
 
 	count = 0
@@ -26,7 +26,7 @@ def count_pcap(file_name):
 	print(f'"{file_name}" contains {count} packets!')
 
 def get_ip(file_name):
-	'''Read the pcap, extract all IP addresses and then remove unwanted IPs'''
+	# Read the pcap, extract all IP addresses and then remove unwanted IPs
 	packet_list = rdpcap(file_name)
 	tmplist_src = []
 	tmplist_dst = []
@@ -58,7 +58,7 @@ def get_ip(file_name):
 	return ip_list
 
 def get_whois(ListOfIPs):
-	'''Run whois on each IP and print formatted data''' 
+	# Run whois on each IP and print formatted data
 	
 	for ip in ListOfIPs:
 		whois_data = IPWhois(ip, allow_permutations=True)
@@ -70,7 +70,7 @@ def get_whois(ListOfIPs):
 
 
 if __name__ == '__main__':
-	'''Set required arguments and error messages'''
+	# Set required arguments and error messages
 	parser = argparse.ArgumentParser(description='PCAP Reader')
 	parser.add_argument('--pcap', metavar='<pcap file name>',
 						help='pcap file to parse', required=True)
